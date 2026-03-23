@@ -6,7 +6,7 @@ router.get('/item/',itemController.getAllItems);
 //route to search an item by id
 router.get('/item/:id',itemController.getItemById);
 //route to create a new item
-router.post('/item',itemController.createElement);
+router.post('/item',itemController.createItem);
 //route to edit an item
 router.put('/item',itemController.updateItem);
 //route to delete an item
