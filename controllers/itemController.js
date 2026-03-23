@@ -1,7 +1,7 @@
 //SQL
 const connection=require('../config/db');
 //get all users
-exports.getAllUsers=(req,res)=>{
+exports.getAllItems=(req,res)=>{
     connection.query('SELECT * FROM finance', (err, rows, fields)=>{
         if(err) throw err;
             res.json(rows);
@@ -10,7 +10,7 @@ exports.getAllUsers=(req,res)=>{
 
 // Search a user by id
 // CRUD - Report
-exports.getUserById=(req,res)=>{
+exports.getItemById=(req,res)=>{
     const id=req.params.id;
     connection.query('SELECT * FROM finance WHERE id=?', [id], (err, rows, fields)=>{
         if(err) throw err;
@@ -23,7 +23,7 @@ exports.getUserById=(req,res)=>{
 
 //Create a new user
 //CRUD - Create
-exports.createUser=(req,res)=>{
+exports.createItem=(req,res)=>{
     const {title, amount, category, date}=req.body;
     connection.query('INSERT INTO finance (title, amount, category, date) VALUES (?, ?, ?, ?)', [title, amount, category, date], (err, result)=>{
         if(err) throw err;
@@ -34,7 +34,7 @@ exports.createUser=(req,res)=>{
 //Edit a user
 //CRUD - Update
 
-exports.updateUser=(req,res)=>{
+exports.updateItem=(req,res)=>{
     const {id, title, amount, category, date}=req.body;
     connection.query('UPDATE finance SET title=?, amount=?, category=?, date=? WHERE id=?', [title, amount, category, date, id], (err, result)=>{
         if(err) throw err;
@@ -47,7 +47,7 @@ exports.updateUser=(req,res)=>{
 
 //Delete a user
 //CRUD - Delete
-exports.deleteUser=(req,res)=>{
+exports.deleteItem=(req,res)=>{
     const id=req.body.id;
     connection.query('DELETE FROM finance WHERE id=?', [id], (err, result)=>{
         if(err) throw err;
