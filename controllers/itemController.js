@@ -25,7 +25,7 @@ exports.getItemById=(req,res)=>{
 //CRUD - Create
 exports.createItem=(req,res)=>{
     const {title, amount, category, date}=req.body;
-    connection.query('INSERT INTO finance (title, amount, category) VALUES (?, ?, ?)', [title, amount, category], (err, result)=>{
+    connection.query('INSERT INTO finance (title, amount, category, date) VALUES (?, ?, ?, ?)', [title, amount, category, date], (err, result)=>{
         if(err) throw err;
         res.json({message: 'Item created successfully', userId: result.insertId});
     })
